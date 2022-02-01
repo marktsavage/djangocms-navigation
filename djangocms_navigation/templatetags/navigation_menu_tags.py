@@ -8,6 +8,8 @@ from classytags.arguments import Argument
 from classytags.core import Options
 from classytags.helpers import InclusionTag
 
+from djangocms_navigation.models import MenuItem
+
 
 register = template.Library()
 
@@ -81,3 +83,18 @@ class NavigationShowBreadcrumb(InclusionTag):
 
 
 register.tag(NavigationShowBreadcrumb)
+
+
+
+@register.inclusion_tag("djangocms_navigation/admin/menuitem_annotated_list.html", takes_context=True)
+def menuitem_get_annotated_list(context):
+    """
+    Returns an 'annotated_list' for a given root node (a MenuItem(MP_Node) instance).
+    Used in compare versions view for MenuContent.
+    """
+    annotated_list = MenuItem.get_annotated_list(parent=context['menucontent'].root)
+    context.update({
+        "annotated_list": annotated_list,
+        "opts": MenuItem._meta
+    })
+    return context
