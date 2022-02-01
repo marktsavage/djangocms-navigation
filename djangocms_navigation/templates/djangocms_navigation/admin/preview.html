@@ -1,0 +1,24 @@
+
+{% comment %}
+TODO: Meta Data needs to be compared
+
+{{menucontent.root.title}}
+{% endcomment %}
+
+
+<div>{{menucontent.menu.identifier}}</div>
+
+<ul>
+{% for node in menucontent.root.get_descendants %}
+<li>{{node.title}}:
+    <ul>
+        <li>{{node.title}}</li>
+        <li>{{node.content.get_absolute_url}}</li>
+        <li>{{node.soft_root}}</li>
+        <li>{{node.hide_node}}</li>
+    </ul>
+
+</li>
+
+{% endfor %}
+</ul>
