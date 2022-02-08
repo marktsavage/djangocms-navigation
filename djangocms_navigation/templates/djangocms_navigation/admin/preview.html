@@ -1,27 +1,5 @@
 {% load navigation_menu_tags  %}
 
-{% comment %}
-TODO: Meta Data needs to be compared
+{% comment %} <div>{{menucontent.menu.identifier}}</div> {% endcomment %}
 
-{{menucontent.root.title}}
-{% endcomment %}
-
-
-<div>{{menucontent.menu.identifier}}</div>
-
-{% comment %}
-<ul>
-    {% for node in menucontent.root.get_descendants %}
-    <li>{{node.title}}:
-        <ul>
-            <li>Title: {{node.title}}</li>
-            <li>Url: {{node.content.get_absolute_url}}</li>
-            <li>Soft root: {{node.soft_root}}</li>
-            <li>Hide in menu: {{node.hide_node}}</li>
-        </ul>
-        
-    </li>
-    
-    {% endfor %}
-{% endcomment %}
 {% menuitem_get_annotated_list %}
