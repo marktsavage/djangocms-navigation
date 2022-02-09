@@ -4,7 +4,7 @@
     {% if info.open %}<ul>{% else %}</li>{% endif %}
     
     <li 
-    data-form-data="{ 
+        data-form-data="{ 
         menu_title: {{item.title}},
         url: {% if item.content %}{{item.content.get_absolute_url}}{% endif %},
         link_target: {{item.link_target}},
